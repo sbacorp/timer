@@ -12,7 +12,7 @@ namespace timer
 {
     public partial class Form1 : Form
     {
-        bool started;
+        
         public Form1()
         {
             InitializeComponent();
@@ -33,10 +33,12 @@ namespace timer
                 s = Convert.ToInt32(textBox3.Text);
 
                 timer1.Start();
-                started = true;
+                button1.Enabled = false;
+                button2.Enabled = true;
+                button3.Enabled = true;
             }
         }
-
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
             s = s - 1;
@@ -63,28 +65,45 @@ namespace timer
 
         }
 
-       
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            button2.Enabled = false;
+            button3.Enabled=false;
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (timer1.Enabled) { 
-                timer1.Stop();
-                button2.Text = "дальше";
+            if (h.Equals(0) && m.Equals(0) && s.Equals(0))
+            {
+                MessageBox.Show("кнопка деактивирована");
             }
-            else {
-                timer1.Start();
-                button2.Text = "пауза";
-            }
-            
+            else
+            {
 
+
+                if (timer1.Enabled)
+                {
+                    timer1.Stop();
+                    button2.Text = "дальше";
+                }
+                else
+                {
+                    timer1.Start();
+                    button2.Text = "пауза";
+                }
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+
             timer1.Stop(); 
             label1.Text = "0";
             label3.Text = "0";
             label5.Text = "0";
+            button1.Enabled = true;
+            button2.Enabled = false;
+            button3.Enabled = false;
         }
     }
 }
