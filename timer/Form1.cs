@@ -22,16 +22,15 @@ namespace timer
 
         private void button1_Click(object sender, EventArgs e)
         {
+            h = Convert.ToInt32(textBox1.Text);
+            m = Convert.ToInt32(textBox2.Text);
+            s = Convert.ToInt32(textBox3.Text);
             if (h.Equals(0)&& m.Equals(0)&&s.Equals(0))
             {
                 MessageBox.Show("введите время");
             }
             else
             {
-                h = Convert.ToInt32(textBox1.Text);
-                m = Convert.ToInt32(textBox2.Text);
-                s = Convert.ToInt32(textBox3.Text);
-
                 timer1.Start();
                 button1.Enabled = false;
                 button2.Enabled = true;
